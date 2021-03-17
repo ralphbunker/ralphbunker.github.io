@@ -3,7 +3,7 @@
 "use strict";
 
 function pow(x, n) {
-	return x ** x
+	return x ** n
 }
 
 function add2(n1, n2) {
