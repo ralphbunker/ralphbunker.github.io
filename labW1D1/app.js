@@ -22,7 +22,7 @@ function add(...args) {
 
 /*
 	Input: grades is an array of integers
-	Output: compute average of grades and report letter grade as follows:
+	Output: compute the average of the grades and report letter grade as follows:
 	90 - 100 A
 	80 - 89  B
 	70 - 79  C
