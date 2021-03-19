@@ -30,6 +30,6 @@ function add(...args) {
 	0 - 59   NC
 */
 function computeGrade(grades) {
-	return "???";
+	return "????";
 }
 
