@@ -4,16 +4,29 @@
 
 /*
 Function analyzer
-Has an unbound this
+Has unbound this
 Creates an object that contains the following information from the "this" object.
 {
 	numProperties  	// number of properties
 	cntShortName	// count of property names shorter than 3 characters
-	cntReferences	// count of reference properties (use the typeof operator to compute this)
+	cntReferences	// count of reference properties
 }	
 */
 function analyzer() {
-	return {};
+	let numProperties = 0;
+	let cntShortName = 0;
+	let cntReference = 0;
+	for (let pname in this) {
+		numProperties++;
+		if (pname.length < 3) {
+			cntShortName++;
+		}
+		if (typeof this[pname] === "object") {
+			cntReference++;
+		}
+	}
+	
+	return {numProperties, cntShortName, cntReference};
 }
 
 /* Constructor for a person object
@@ -26,4 +39,14 @@ function analyzer() {
 	}
 */
 function Person(name, country, grades) {
+	this.name = name;
+	this.country = country;
+	this.grades = grades;
+	this.computeGrade = function() {
+		let sum = 0;
+		for (let grade of grades) {
+			sum += grade;
+		}
+		return sum / grades.length;
+	}
 }
