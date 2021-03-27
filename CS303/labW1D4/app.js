@@ -56,6 +56,18 @@ function makePositive(array) {
 	return array.map(f);
 	
 }
+function removeZerosAlt(array) {
+  let arr = [];
+  for (let each of array) {
+    if (each !== 0) arr.push(each);
+    else {
+      if (arr[arr.length - 1] !== "*") {
+		  arr.push("*");
+	  }
+    }
+  }
+  return arr;
+}
 
 function removeZeros(array) {
 		let start = 0, length = 0;
@@ -77,20 +89,17 @@ function removeZeros(array) {
 	return array;
 }
 
-function countSubstring(s, target) {
-	let idx = 0;
-	let count = 0;
-	let start = 0;
-	let lenTarget = target.length;
-	do {
-		idx = s.substr(start).indexOf(target);
-		if (idx !== -1) {
-			count++;
-			start = idx + lenTarget;
-		} 
-	} while(idx > 0);
-	
-	return count;
+function bench(f) {
+  let date1 = new Date(0);
+  let start = Date.now();
+  for (let i = 0; i < 100000; i++) f([5, 0, 0, 0, 4, 5, 0, 0, 3, 0]);
+  return Date.now() - start;
 }
+
+function compare() {
+	console.log( 'Time of removeZerosAlt: ' + bench(removeZerosAlt) + 'ms' );
+	console.log( 'Time of removeZeros: ' + bench(removeZeros) + 'ms' );
+}
+
 
 
